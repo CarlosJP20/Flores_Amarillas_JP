@@ -1444,13 +1444,16 @@ body {
     transform: scale(1.05); /* Crece un poquito */
     filter: brightness(1.2); /* Se ilumina */
 }
-/* Permitir desplazamiento vertical fluido y evitar zoom lateral */
+/* Corrección de pantalla completa y centrado */
 html, body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Evita que la pantalla se mueva hacia los lados */
-  overflow-y: auto;   /* Permite deslizar hacia arriba y abajo con normalidad */
+  overflow: hidden;
   background-color: #000;
+  touch-action: none; /* Evita gestos extraños de zoom o arrastre */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }/*# sourceMappingURL=main.css.map */
