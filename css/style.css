@@ -96,12 +96,3 @@ body{
     background-color: #3a0368; /* Verde más oscuro al pasar el mouse */
     box-shadow: 0 0 10px #990580, 0 0 20px #a0088c, 0 0 30px #b807be62; /* Resplandor verde */
   }
-/* Bloquear el movimiento de la pantalla y forzar pantalla completa real */
-html, body {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow: hidden;
-  touch-action: none; /* Evita gestos táctiles extraños en el celular */
-  background-color: #000;
-}
