@@ -514,7 +514,6 @@ body::before {
         // 2. Lógica del Modal (Ventana Emergente de Imágenes)
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
-        const spanClose = document.getElementsByClassName("close-modal")[0];
 
         floresInteractivas.forEach(dato => {
           const flor = document.querySelector(`.flower--${dato.numero}`);
@@ -533,9 +532,6 @@ body::before {
         });
 
         // 3. Cerrar el modal (con la X o haciendo clic fuera)
-        if (spanClose) {
-            spanClose.onclick = function() { modal.classList.remove('show'); }
-        }
         window.onclick = function(event) {
           if (event.target == modal) { modal.classList.remove('show'); }
         }
