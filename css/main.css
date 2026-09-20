@@ -1452,9 +1452,17 @@ html, body {
   padding: 0;
   overflow: hidden;
   background-color: #000;
-  touch-action: none; /* Evita gestos extraños de zoom o arrastre */
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  touch-action: none; /* Bloquea el zoom y el desplazamiento de la pantalla */
+}
+
+/* Asegurar que el contenedor del texto se mantenga visible arriba */
+.mensaje {
+  position: absolute;
+  top: 8%; /* Ajusta esta distancia desde arriba si lo quieres más arriba o abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  z-index: 100;
 }
 /*# sourceMappingURL=main.css.map */
