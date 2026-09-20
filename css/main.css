@@ -1453,13 +1453,4 @@ html, body {
   overflow-x: hidden; /* Evita que la pantalla se mueva hacia los lados */
   overflow-y: auto;   /* Permite deslizar hacia arriba y abajo con normalidad */
   background-color: #000;
-}
-
-/* Ajuste perfecto para las letras de arriba */
-.mensaje {
-  position: relative; /* Cambiamos a relative para que fluya de forma natural */
-  margin: 25px auto 10px auto; /* Deja un espacio seguro desde la barra del celular */
-  width: 90%;
-  text-align: center;
-  z-index: 100;
 }/*# sourceMappingURL=main.css.map */
