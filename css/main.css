@@ -1444,4 +1444,13 @@ body {
     transform: scale(1.05); /* Crece un poquito */
     filter: brightness(1.2); /* Se ilumina */
 }
+/* Bloquear el movimiento de la pantalla y forzar pantalla completa real */
+html, body {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  touch-action: none; /* Evita gestos táctiles extraños en el celular */
+  background-color: #000;
+}
 /*# sourceMappingURL=main.css.map */
