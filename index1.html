@@ -400,70 +400,79 @@ body::before {
         }
         
         function showHackerText() {
-            const message = "Mas hermosa que las flores eres tu mi amor, te amo ❤️";
+            // Aquí defines tus 3 mensajes en orden
+            const messages = [
+                "Mas hermosa que las flores eres tu mi amor, te amo ❤️",
+                "Eres la casualidad más bonita de mi vida ✨",
+                "Siempre juntos pase lo que pase, mi vida entera 🌹" // <--- Cambia esto por tu tercer mensaje
+            ];
+            
             const auraText = document.getElementById('aura-text');
             const finalMessage = document.getElementById('final-message');
             
-            // Mostrar el contenedor de texto
-            auraText.style.opacity = '1';
-            
-            // Crear cursor inicial
-            const cursor = document.createElement('span');
-            cursor.className = 'cursor';
-            auraText.appendChild(cursor);
-            
-            // Dividir el mensaje en caracteres para un efecto de escritura más lento
-            const characters = message.split('');
-            let currentIndex = 0;
-            
-            // Función para mostrar caracteres uno por uno
-            function showNextCharacter() {
-                if (currentIndex < characters.length) {
-                    // Si es el primer carácter o el anterior era un espacio, crear un nuevo span
-                    if (currentIndex === 0 || characters[currentIndex-1] === ' ') {
-                        const wordSpan = document.createElement('span');
-                        auraText.insertBefore(wordSpan, cursor);
+            let currentMessageIndex = 0;
+
+            function playNextMessage() {
+                if (currentMessageIndex < messages.length) {
+                    const message = messages[currentMessageIndex];
+                    auraText.innerHTML = ''; // Limpiar texto anterior
+                    auraText.style.opacity = '1';
+                    
+                    // Crear cursor
+                    const cursor = document.createElement('span');
+                    cursor.className = 'cursor';
+                    auraText.appendChild(cursor);
+                    
+                    const characters = message.split('');
+                    let currentIndex = 0;
+                    
+                    function showNextCharacter() {
+                        if (currentIndex < characters.length) {
+                            if (currentIndex === 0 || characters[currentIndex-1] === ' ') {
+                                const wordSpan = document.createElement('span');
+                                auraText.insertBefore(wordSpan, cursor);
+                            }
+                            
+                            const lastSpan = auraText.querySelector('span:not(.cursor)');
+                            lastSpan.textContent += characters[currentIndex];
+                            
+                            setTimeout(() => {
+                                lastSpan.style.opacity = '1';
+                                lastSpan.style.transform = 'translateY(0)';
+                            }, 50);
+                            
+                            currentIndex++;
+                            setTimeout(showNextCharacter, 150);
+                        } else {
+                            // Terminó este mensaje, esperamos un momento antes de pasar al siguiente
+                            cursor.remove();
+                            
+                            setTimeout(() => {
+                                auraText.style.opacity = '0';
+                                currentMessageIndex++;
+                                
+                                // Esperar a que se desvanezca para mostrar el siguiente mensaje
+                                setTimeout(playNextMessage, 1000);
+                            }, 2500); // Tiempo que se queda visible el mensaje completo antes de cambiar
+                        }
                     }
                     
-                    // Agregar el carácter actual al último span
-                    const lastSpan = auraText.querySelector('span:not(.cursor)');
-                    lastSpan.textContent += characters[currentIndex];
-                    
-                    // Animación de entrada
-                    setTimeout(() => {
-                        lastSpan.style.opacity = '1';
-                        lastSpan.style.transform = 'translateY(0)';
-                    }, 50);
-                    
-                    currentIndex++;
-                    
-                    // Mostrar siguiente carácter después de un retraso mayor (más lento)
-                    setTimeout(showNextCharacter, 150)+2000; // Más lento que antes (150ms por carácter)
+                    showNextCharacter();
                 } else {
-                    // Todos los caracteres mostrados, eliminar cursor
-                    cursor.remove();
+                    // Cuando ya pasaron los 3 mensajes, mostramos el mensaje final en rojo brillante
+                    const lastMessage = messages[messages.length - 1];
+                    finalMessage.textContent = lastMessage;
+                    finalMessage.style.opacity = '1';
+                    finalMessage.style.transition = 'opacity 1s ease-in';
                     
-                    // Transición al mensaje final
                     setTimeout(() => {
-                        auraText.style.opacity = '0';
-                        auraText.style.transition = 'opacity 1s ease-out';
-                        
-                        setTimeout(() => {
-                            finalMessage.textContent = message;
-                            finalMessage.style.opacity = '1';
-                            finalMessage.style.transition = 'opacity 1s ease-in';
-                            
-                            // Cambiar a rojo brillante después de 3 segundos
-                            setTimeout(() => {
-                                finalMessage.classList.add('active');
-                            }, 3000);
-                        }, 1000);
-                    }, 2000);
+                        finalMessage.classList.add('active');
+                    }, 3000);
                 }
             }
-            
-            // Iniciar la secuencia
-            showNextCharacter();
+
+            // Iniciar la secuencia con el primer mensaje
+            playNextMessage();
         }
     </script>
     <script src="main.js"></script>
