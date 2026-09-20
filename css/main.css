@@ -1444,16 +1444,18 @@ body {
     transform: scale(1.05); /* Crece un poquito */
     filter: brightness(1.2); /* Se ilumina */
 }
-/* Corrección de pantalla completa adaptable para PC y celular */
+/* Corrección definitiva para centrar y fijar los márgenes laterales */
 html, body {
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #000;
-  overflow-x: hidden; /* Evita que se mueva hacia los lados */
-  overflow-y: auto;   /* Permite deslizar hacia arriba y abajo en el celular */
+  overflow-x: hidden; /* Bloquea totalmente el movimiento horizontal */
+  overflow-y: auto;   /* Mantiene el desplazamiento vertical fluido */
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }/*# sourceMappingURL=main.css.map */
