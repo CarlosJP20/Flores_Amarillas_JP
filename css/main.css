@@ -1444,15 +1444,15 @@ body {
     transform: scale(1.05); /* Crece un poquito */
     filter: brightness(1.2); /* Se ilumina */
 }
-/* Corrección de pantalla completa y centrado */
+/* Corrección de pantalla completa adaptable para PC y celular */
 html, body {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: #000;
-  touch-action: none; /* Evita gestos extraños de zoom o arrastre */
+  overflow-x: hidden; /* Evita que se mueva hacia los lados */
+  overflow-y: auto;   /* Permite deslizar hacia arriba y abajo en el celular */
   display: flex;
   justify-content: center;
   align-items: flex-end;
