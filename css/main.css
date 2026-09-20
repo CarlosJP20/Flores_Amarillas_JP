@@ -1409,25 +1409,6 @@ body {
   border-radius: 6px; /* Borde interior un poco más suave */
 }
 
-/* El botón para cerrar (X) */
-.close-modal {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  z-index: 10001;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-  color: #ffea00;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 /* Para que el cursor cambie al pasar por las flores interactivas */
 .flower-clickable {
