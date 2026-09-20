@@ -22,13 +22,14 @@
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
             background-color: #ffff00;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
+            box-shadow: 0 0 5px #ffff00;
             animation: fall linear infinite;
             z-index: 10;
+            will-change: transform;
         }
 
         @keyframes fall {
@@ -290,10 +291,11 @@ body::before {
         });
 
         // Código para las partículas amarillas
-        let PARTICLE_INTENSITY = 50;
-        let PARTICLE_SPAWN_RATE = 500;
-        const PARTICLE_SPEED = 0.5; // Más lento que la lluvia
-        const WIND_INTENSITY = 20; // Menos viento que para la lluvia
+        // Código para las partículas amarillas (VERSIÓN OPTIMIZADA PARA MÓVIL)
+        let PARTICLE_INTENSITY = 30;
+        let PARTICLE_SPAWN_RATE = 600;
+        const PARTICLE_SPEED = 0.5; 
+        const WIND_INTENSITY = 10; 
         let particleInterval;
 
         function startParticles() {
@@ -301,22 +303,20 @@ body::before {
             for (let i = 0; i < PARTICLE_INTENSITY; i++) {
                 createParticle();
             }
+            
+            // Aumento gradual seguro para el celular
             let intensityIncreaseInterval = setInterval(() => {
-                PARTICLE_INTENSITY += 20;
-                PARTICLE_SPAWN_RATE = Math.max(40, PARTICLE_SPAWN_RATE - 30);
-                for (let i = 0; i < 10; i++) {
-                    createParticle();
-                }
-                if (PARTICLE_INTENSITY > 400 && PARTICLE_SPAWN_RATE <= 50) {
+                if (PARTICLE_INTENSITY < 100) { // Límite máximo (antes era 600)
+                    PARTICLE_INTENSITY += 15;
+                    PARTICLE_SPAWN_RATE = Math.max(150, PARTICLE_SPAWN_RATE - 50);
+                } else {
                     clearInterval(intensityIncreaseInterval);
-                    PARTICLE_INTENSITY = 600;
-                    PARTICLE_SPAWN_RATE = 40;
-                    clearInterval(particleInterval);
-                    particleInterval = setInterval(createParticle, PARTICLE_SPAWN_RATE);
-                } else if (!particleInterval) {
-                    particleInterval = setInterval(createParticle, PARTICLE_SPAWN_RATE);
                 }
-            }, 1000);
+                
+                clearInterval(particleInterval);
+                particleInterval = setInterval(createParticle, PARTICLE_SPAWN_RATE);
+            }, 2000);
+            
             setInterval(() => {
                 const wind = (Math.random() * WIND_INTENSITY * 2) - WIND_INTENSITY;
                 document.documentElement.style.setProperty('--wind', `${wind}px`);
