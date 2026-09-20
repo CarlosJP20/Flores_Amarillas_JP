@@ -1445,17 +1445,15 @@ body {
     filter: brightness(1.2); /* Se ilumina */
 }
 /* Bloquear el movimiento de la pantalla y forzar pantalla completa real */
-/* Permitir desplazamiento vertical fluido y evitar zoom lateral */
 /* Permitir desplazamiento vertical y gestos del navegador (como retroceder) */
 html, body {
   width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Bloquea el movimiento lateral molesto */
-  overflow-y: auto;   /* Permite subir y bajar con normalidad y actualizar */
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: #000;
-  /* Quitamos 'touch-action: none' para que el celular reconozca los gestos de retroceso de la pantalla */
 }
 
 /* Posición limpia y segura para el texto de arriba */
@@ -1466,5 +1464,4 @@ html, body {
   text-align: center;
   z-index: 100;
 }
-
 /*# sourceMappingURL=main.css.map */
