@@ -209,7 +209,7 @@ body::before {
     bottom: -100vh; /* Comienza desde muy abajo (fuera de pantalla) */
     left: 50%;
     transform: translateX(-50%);
-    width: 1200px; /* Más ancho */
+    width: 100%; /* Más ancho */
     height: 150vh; /* Muy alto para cubrir toda la pantalla */
     background: linear-gradient(to top, 
               rgba(238, 246, 7, 0.9) 0%,
@@ -472,8 +472,7 @@ body::before {
 
     <!-- Modal para mostrar la imagen -->
     <div id="imageModal" class="modal">
-        <!-- El botón (la X) para cerrar la imagen -->
-        <span class="close-modal">&times;</span>
+        
         <!-- El contenedor de tu imagen -->
         <div class="modal-content-wrapper">
             <img class="modal-content" id="modalImage" src="images.jpg" alt="Mi amor">
