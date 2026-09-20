@@ -1444,24 +1444,22 @@ body {
     transform: scale(1.05); /* Crece un poquito */
     filter: brightness(1.2); /* Se ilumina */
 }
-/* Bloquear el movimiento de la pantalla y forzar pantalla completa real */
-/* Permitir desplazamiento vertical y gestos del navegador (como retroceder) */
+/* Permitir desplazamiento vertical fluido y evitar zoom lateral */
 html, body {
   width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-x: hidden; /* Evita que la pantalla se mueva hacia los lados */
+  overflow-y: auto;   /* Permite deslizar hacia arriba y abajo con normalidad */
   background-color: #000;
 }
 
-/* Posición limpia y segura para el texto de arriba */
+/* Ajuste perfecto para las letras de arriba */
 .mensaje {
-  position: relative;
-  margin: 25px auto 10px auto;
+  position: relative; /* Cambiamos a relative para que fluya de forma natural */
+  margin: 25px auto 10px auto; /* Deja un espacio seguro desde la barra del celular */
   width: 90%;
   text-align: center;
   z-index: 100;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
